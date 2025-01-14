@@ -1,7 +1,4 @@
-# Print QRCodes
+# QR Code Printer
 
-Convert texts to qrcode for you to print on paper, fast!!!
+This website provides a convenient way to generate and export multiple QR codes to pdf files efficiently. All based in client-side.
 
-# Problem
-
-I got lot's of link wanna show to others, like i'm on a consert or interview...
