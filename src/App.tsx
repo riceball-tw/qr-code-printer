@@ -145,7 +145,7 @@ export default function App() {
         {/* Print section */}
         <ResizablePanel defaultSize={70} className="bg-black flex justify-center print:justify-start !overflow-visible">
           {/* Paper */}
-          <div style={{maxWidth: "210mm", maxHeight: 'auto', minHeight: '297mm'}} className="bg-white h-fit w-full p-4 flex flex-col overflow-visible justify-between">
+          <div style={{maxWidth: "210mm", maxHeight: 'auto', minHeight: '297mm'}} className="bg-white h-fit w-full p-4 flex flex-col overflow-visible justify-between relative bottom-60 md:bottom-0">
             <div>
             {/* Descripations */}
               <div className="flex flex-wrap justify-between items-center mb-4">
