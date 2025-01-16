@@ -29,10 +29,10 @@ export default function App() {
     <div>
       <ResizablePanelGroup direction="horizontal">
         {/* Sidebar */}
-        <ResizablePanel defaultSize={30} maxSize={30} minSize={15} className="md:border-t-0 border-t-2 border-black p-4 print:hidden !overflow-auto md:static md:max-h-none fixed bottom-0 max-h-60 bg-white w-full z-10 md:min-h-screen">
+        <ResizablePanel defaultSize={30} maxSize={30} minSize={15} className="fixed bottom-0 z-10 max-h-60 w-full !overflow-auto border-t-2 border-black bg-white p-4 md:static md:max-h-none md:min-h-screen md:border-t-0 print:hidden">
           {/* Logo and Logomark */}
           <div className="mb-8">
-            <h1 className=" flex flex-wrap gap-2 items-center text-3xl font-bold">
+            <h1 className=" flex flex-wrap items-center gap-2 text-3xl font-bold">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M3 10V4q0-.425.288-.712T4 3h6q.425 0 .713.288T11 4v6q0 .425-.288.713T10 11H4q-.425 0-.712-.288T3 10m2-1h4V5H5zM3 20v-6q0-.425.288-.712T4 13h6q.425 0 .713.288T11 14v6q0 .425-.288.713T10 21H4q-.425 0-.712-.288T3 20m2-1h4v-4H5zm8-9V4q0-.425.288-.712T14 3h6q.425 0 .713.288T21 4v6q0 .425-.288.713T20 11h-6q-.425 0-.712-.288T13 10m2-1h4V5h-4zm4 12v-2h2v2zm-6-6v-2h2v2zm2 2v-2h2v2zm-2 2v-2h2v2zm2 2v-2h2v2zm2-2v-2h2v2zm0-4v-2h2v2zm2 2v-2h2v2z"/></svg>
             Print QR Codes
             </h1>
@@ -47,8 +47,8 @@ export default function App() {
                 Content Settings
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="space-y-2 m-1" >
-                <div className="w-full flex flex-wrap flex-col gap-2">
+              <AccordionContent className="m-1 space-y-2" >
+                <div className="flex w-full flex-col flex-wrap gap-2">
                   <Label htmlFor="heading">Heading</Label>
                   <Input
                   id="heading"
@@ -140,15 +140,15 @@ export default function App() {
           </Button>
         </ResizablePanel>
 
-        <ResizableHandle withHandle className="print:hidden hidden md:flex"/>
+        <ResizableHandle withHandle className="hidden md:flex print:hidden"/>
         
         {/* Print section */}
-        <ResizablePanel defaultSize={70} className="bg-black flex justify-center print:justify-start !overflow-visible">
+        <ResizablePanel defaultSize={70} className="flex justify-center !overflow-visible bg-black print:justify-start">
           {/* Paper */}
-          <div style={{maxWidth: "210mm", maxHeight: 'auto', minHeight: '297mm'}} className="bg-white h-fit w-full p-4 flex flex-col overflow-visible justify-between relative bottom-60 md:bottom-0">
+          <div style={{maxWidth: "210mm", maxHeight: 'auto', minHeight: '297mm'}} className="relative bottom-60 flex h-fit w-full flex-col justify-between overflow-visible bg-white p-4 md:bottom-0">
             <div>
             {/* Descripations */}
-              <div className="flex flex-wrap justify-between items-center mb-4">
+              <div className="mb-4 flex flex-wrap items-center justify-between">
                 {
                   paperHeading ? <h2 className="text-2xl font-bold">{paperHeading}</h2> : ''
                 }
@@ -160,12 +160,12 @@ export default function App() {
               <div style={{ gridTemplateColumns: `repeat(auto-fill, minmax(${minColWidth}mm, 1fr))`}} className="grid gap-4">
                 {inputValues.map((value, index) => (
                   value && (
-                    <div key={index} className="border-black border-2 p-2 text-center relative">
+                    <div key={index} className="relative border-2 border-black p-2 text-center">
                       <QRCode className='w-full' value={value} size={minColWidth * mmToPxRatio} />
-                      <p className="mt-2 text-sm break-words">{value}</p>
+                      <p className="mt-2 break-words text-sm">{value}</p>
                       
                       {
-                        isShowQrCodeIndex && <div className="absolute top-0 left-0 bg-white p-1">#{index + 1}</div>
+                        isShowQrCodeIndex && <div className="absolute left-0 top-0 bg-white p-1">#{index + 1}</div>
                       }
                     </div>
                   )
